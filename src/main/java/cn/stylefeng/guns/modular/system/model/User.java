@@ -24,209 +24,244 @@ public class User extends Model<User> {
     /**
      * 主键id
      */
-    @TableId(value = "id", type = IdType.AUTO)
-    private Integer id;
+	@TableId(value="id", type= IdType.AUTO)
+	private Integer id;
     /**
      * 头像
      */
-    private String avatar;
+	private String avatar;
     /**
      * 账号
      */
-    private String account;
+	private String account;
     /**
      * 密码
      */
-    private String password;
+	private String password;
     /**
      * md5密码盐
      */
-    private String salt;
+	private String salt;
     /**
      * 名字
      */
-    private String name;
+	private String name;
+	private Integer code;
+	private Integer mark;
+	private Integer classcode;
+	private String classname;
     /**
      * 生日
      */
-    private Date birthday;
+	private Date birthday;
     /**
      * 性别（1：男 2：女）
      */
-    private Integer sex;
+	private Integer sex;
     /**
      * 电子邮件
      */
-    private String email;
+	private String email;
     /**
      * 电话
      */
-    private String phone;
+	private String phone;
     /**
      * 角色id
      */
-    private String roleid;
+	private String roleid;
     /**
      * 部门id
      */
-    private Integer deptid;
+	private Integer deptid;
     /**
      * 状态(1：启用  2：冻结  3：删除）
      */
-    private Integer status;
+	private Integer status;
     /**
      * 创建时间
      */
-    private Date createtime;
+	private Date createtime;
     /**
      * 保留字段
      */
-    private Integer version;
+	private Integer version;
 
+	public Integer getMark() {
+		return mark;
+	}
 
-    public Integer getId() {
-        return id;
-    }
+	public void setMark(Integer mark) {
+		this.mark = mark;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public Integer getCode() {
+		return code;
+	}
 
-    public String getAvatar() {
-        return avatar;
-    }
+	public void setCode(Integer code) {
+		this.code = code;
+	}
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
+	public Integer getClasscode() {
+		return classcode;
+	}
 
-    public String getAccount() {
-        return account;
-    }
+	public void setClasscode(Integer classcode) {
+		this.classcode = classcode;
+	}
 
-    public void setAccount(String account) {
-        this.account = account;
-    }
+	public String getClassname() {
+		return classname;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public void setClassname(String classname) {
+		this.classname = classname;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getSalt() {
-        return salt;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+	public String getAvatar() {
+		return avatar;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getAccount() {
+		return account;
+	}
 
-    public Date getBirthday() {
-        return birthday;
-    }
+	public void setAccount(String account) {
+		this.account = account;
+	}
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
+	public String getPassword() {
+		return password;
+	}
 
-    public Integer getSex() {
-        return sex;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public void setSex(Integer sex) {
-        this.sex = sex;
-    }
+	public String getSalt() {
+		return salt;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getPhone() {
-        return phone;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+	public Date getBirthday() {
+		return birthday;
+	}
 
-    public String getRoleid() {
-        return roleid;
-    }
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
-    public void setRoleid(String roleid) {
-        this.roleid = roleid;
-    }
+	public Integer getSex() {
+		return sex;
+	}
 
-    public Integer getDeptid() {
-        return deptid;
-    }
+	public void setSex(Integer sex) {
+		this.sex = sex;
+	}
 
-    public void setDeptid(Integer deptid) {
-        this.deptid = deptid;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public Integer getStatus() {
-        return status;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public void setStatus(Integer status) {
-        this.status = status;
-    }
+	public String getPhone() {
+		return phone;
+	}
 
-    public Date getCreatetime() {
-        return createtime;
-    }
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
-    public void setCreatetime(Date createtime) {
-        this.createtime = createtime;
-    }
+	public String getRoleid() {
+		return roleid;
+	}
 
-    public Integer getVersion() {
-        return version;
-    }
+	public void setRoleid(String roleid) {
+		this.roleid = roleid;
+	}
 
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
+	public Integer getDeptid() {
+		return deptid;
+	}
 
-    @Override
-    protected Serializable pkVal() {
-        return this.id;
-    }
+	public void setDeptid(Integer deptid) {
+		this.deptid = deptid;
+	}
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", avatar=" + avatar +
-                ", account=" + account +
-                ", password=" + password +
-                ", salt=" + salt +
-                ", name=" + name +
-                ", birthday=" + birthday +
-                ", sex=" + sex +
-                ", email=" + email +
-                ", phone=" + phone +
-                ", roleid=" + roleid +
-                ", deptid=" + deptid +
-                ", status=" + status +
-                ", createtime=" + createtime +
-                ", version=" + version +
-                "}";
-    }
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Date getCreatetime() {
+		return createtime;
+	}
+
+	public void setCreatetime(Date createtime) {
+		this.createtime = createtime;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+	@Override
+	protected Serializable pkVal() {
+		return this.id;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" +
+			"id=" + id +
+			", avatar=" + avatar +
+			", account=" + account +
+			", password=" + password +
+			", salt=" + salt +
+			", name=" + name +
+			", birthday=" + birthday +
+			", sex=" + sex +
+			", email=" + email +
+			", phone=" + phone +
+			", roleid=" + roleid +
+			", deptid=" + deptid +
+			", status=" + status +
+			", createtime=" + createtime +
+			", version=" + version +
+			"}";
+	}
 }

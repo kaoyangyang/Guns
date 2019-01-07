@@ -10,6 +10,10 @@
 		<result column="password" property="password" />
 		<result column="salt" property="salt" />
 		<result column="name" property="name" />
+		<result column="code" property="code" />
+		<result column="mark" property="mark" />
+		<result column="classcode" property="classcode" />
+		<result column="classname" property="classname" />
 		<result column="birthday" property="birthday" />
 		<result column="sex" property="sex" />
 		<result column="email" property="email" />
@@ -22,14 +26,14 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, account, name, birthday, sex, email, avatar,
+		id, account, name, birthday, sex, email, avatar,code,classcode,classname,mark,
 		phone, roleid,
 		deptid, status,
 		createtime, version
 	</sql>
 
 	<sql id="Base_Column_List_With_Pwd">
-		id, account, name, birthday,password, sex, email, avatar,
+		id, account, name, birthday,password, sex, email, avatar,code,classcode,classname,mark,
 		phone, roleid,salt,
 		deptid, status,
 		createtime, version

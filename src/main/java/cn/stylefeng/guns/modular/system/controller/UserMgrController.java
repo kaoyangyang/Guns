@@ -26,7 +26,9 @@ import cn.stylefeng.guns.core.common.exception.BizExceptionEnum;
 import cn.stylefeng.guns.core.log.LogObjectHolder;
 import cn.stylefeng.guns.core.shiro.ShiroKit;
 import cn.stylefeng.guns.core.shiro.ShiroUser;
+import cn.stylefeng.guns.modular.Classes.service.IClassesService;
 import cn.stylefeng.guns.modular.system.factory.UserFactory;
+import cn.stylefeng.guns.modular.system.model.Classes;
 import cn.stylefeng.guns.modular.system.model.User;
 import cn.stylefeng.guns.modular.system.service.IUserService;
 import cn.stylefeng.guns.modular.system.transfer.UserDto;
@@ -69,7 +71,8 @@ public class UserMgrController extends BaseController {
 
     @Autowired
     private IUserService userService;
-
+    @Autowired
+    private IClassesService classesService;
     /**
      * 跳转到查看管理员列表的页面
      */
@@ -82,7 +85,9 @@ public class UserMgrController extends BaseController {
      * 跳转到查看管理员列表的页面
      */
     @RequestMapping("/user_add")
-    public String addView() {
+    public String addView(Model model) {
+        List<Classes> classes = classesService.selectList(null);
+        model.addAttribute("classes",classes);
         return PREFIX + "user_add.html";
     }
 
@@ -116,6 +121,8 @@ public class UserMgrController extends BaseController {
         model.addAttribute(user);
         model.addAttribute("roleName", ConstantFactory.me().getRoleName(user.getRoleid()));
         model.addAttribute("deptName", ConstantFactory.me().getDeptName(user.getDeptid()));
+        List<Classes> classes = classesService.selectList(null);
+        model.addAttribute("classes",classes);
         LogObjectHolder.me().set(user);
         return PREFIX + "user_edit.html";
     }
@@ -228,8 +235,48 @@ public class UserMgrController extends BaseController {
         User oldUser = userService.selectById(user.getId());
 
         if (ShiroKit.hasRole(Const.ADMIN_NAME)) {
-            this.userService.updateById(UserFactory.editUser(user, oldUser));
-            return SUCCESS_TIP;
+
+            if (user == null || oldUser == null) {
+                this.userService.updateById(oldUser);
+                return SUCCESS_TIP;
+            } else {
+                if (ToolUtil.isNotEmpty(user.getAvatar())) {
+                    oldUser.setAvatar(user.getAvatar());
+                }
+                if (ToolUtil.isNotEmpty(user.getName())) {
+                    oldUser.setName(user.getName());
+                }
+                if (ToolUtil.isNotEmpty(user.getBirthday())) {
+                    oldUser.setBirthday(user.getBirthday());
+                }
+                if (ToolUtil.isNotEmpty(user.getDeptid())) {
+                    oldUser.setDeptid(user.getDeptid());
+                }
+                if (ToolUtil.isNotEmpty(user.getSex())) {
+                    oldUser.setSex(user.getSex());
+                }
+                if (ToolUtil.isNotEmpty(user.getEmail())) {
+                    oldUser.setEmail(user.getEmail());
+                }
+                if (ToolUtil.isNotEmpty(user.getPhone())) {
+                    oldUser.setPhone(user.getPhone());
+                }
+
+
+                if (ToolUtil.isNotEmpty(user.getMark())) {
+                    oldUser.setMark(user.getMark());
+                }
+                if (ToolUtil.isNotEmpty(user.getCode())) {
+                    oldUser.setCode(user.getCode());
+                }
+                if (ToolUtil.isNotEmpty(user.getClasscode())) {
+                    oldUser.setClassname(classesService.selectById(user.getClasscode()).getName());
+                    oldUser.setClasscode(classesService.selectById(user.getClasscode()).getCode());
+                }
+
+                this.userService.updateById(oldUser);
+                return SUCCESS_TIP;
+            }
         } else {
             assertAuth(user.getId());
             ShiroUser shiroUser = ShiroKit.getUser();

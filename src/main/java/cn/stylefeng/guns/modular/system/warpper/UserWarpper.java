@@ -53,6 +53,7 @@ public class UserWarpper extends BaseControllerWrapper {
         map.put("roleName", ConstantFactory.me().getRoleName((String) map.get("roleid")));
         map.put("deptName", ConstantFactory.me().getDeptName((Integer) map.get("deptid")));
         map.put("statusName", ConstantFactory.me().getStatusName((Integer) map.get("status")));
+        map.put("markName", ConstantFactory.me().getMarkName((Integer) map.get("mark")));
     }
 
 }

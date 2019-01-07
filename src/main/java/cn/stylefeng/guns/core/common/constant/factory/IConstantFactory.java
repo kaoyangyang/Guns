@@ -82,7 +82,10 @@ public interface IConstantFactory {
      * 获取字典名称
      */
     String getDictName(Integer dictId);
-
+    /**
+     * 获取用户登录状态
+     */
+    String getMarkName(Integer mark);
     /**
      * 获取通知标题
      */

@@ -43,8 +43,44 @@ public class UserDto {
     private Integer status;
     private Date createtime;
     private Integer version;
-    private String avatar;
 
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public Integer getMark() {
+        return mark;
+    }
+
+    public void setMark(Integer mark) {
+        this.mark = mark;
+    }
+
+    public Integer getClasscode() {
+        return classcode;
+    }
+
+    public void setClasscode(Integer classcode) {
+        this.classcode = classcode;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname;
+    }
+
+    private String avatar;
+    private Integer code;
+    private Integer mark;
+    private Integer classcode;
+    private String classname;
 
     public Integer getId() {
         return id;

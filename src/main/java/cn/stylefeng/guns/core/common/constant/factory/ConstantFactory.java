@@ -20,6 +20,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.stylefeng.guns.core.common.constant.cache.Cache;
 import cn.stylefeng.guns.core.common.constant.cache.CacheKey;
 import cn.stylefeng.guns.core.common.constant.state.ManagerStatus;
+import cn.stylefeng.guns.core.common.constant.state.MarkStatus;
 import cn.stylefeng.guns.core.common.constant.state.MenuStatus;
 import cn.stylefeng.guns.core.log.LogObjectHolder;
 import cn.stylefeng.guns.modular.system.dao.*;
@@ -277,7 +278,10 @@ public class ConstantFactory implements IConstantFactory {
     public String getStatusName(Integer status) {
         return ManagerStatus.valueOf(status);
     }
-
+    @Override
+    public String getMarkName(Integer mark) {
+        return MarkStatus.valueOf(mark);
+    }
     /**
      * 获取菜单状态
      */

@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+
+                <div class="col-sm-6 b-r">
+                        课程:
+                        <select id="coursename" name="coursename" class="form-control" >
+                            @for(course in courses){
+                            <option value="${course.id}" class="alert alert-success alert-dismissable">
+                                ${course.course}
+                            </option>
+                            @}
+                        </select>
+                </div>
+                <div class="col-sm-6 b-r">
+                            <#input id="socre" name="分数" underline="true"/>
+                </div>
+                <div class="col-sm-6 b-r">
+                    学生姓名:
+                        <select id="username" name="username" class="form-control" >
+                            @for(student in students){
+                            <option value="${student.id}" class="alert alert-success alert-dismissable">
+                                ${student.name}
+                            </option>
+                            @}
+                        </select>
+                </div>
+                <div class="col-sm-6">
+                    <label class="col-sm-3 control-label">班级</label>
+                    <div class="col-sm-9">
+                        <select id="classcode" name="classcode" class="form-control" >
+                            @for(class in classes){
+                            <option value="${class.id}" class="alert alert-success alert-dismissable">
+                                ${class.name}
+                            </option>
+                            @}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ScoreInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ScoreInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/Score/score/score_info.js"></script>
+@}
