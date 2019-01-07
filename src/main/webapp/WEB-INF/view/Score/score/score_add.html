@@ -7,7 +7,7 @@
 
                 <div class="col-sm-6 b-r">
                         课程:
-                        <select id="coursename" name="coursename" class="form-control" >
+                        <select id="courseid" name="courseid" class="form-control" >
                             @for(course in courses){
                             <option value="${course.id}" class="alert alert-success alert-dismissable">
                                 ${course.course}
@@ -18,28 +18,24 @@
                 <div class="col-sm-6 b-r">
                             <#input id="socre" name="分数" underline="true"/>
                 </div>
-                <div class="col-sm-6 b-r">
-                    学生姓名:
-                        <select id="username" name="username" class="form-control" >
-                            @for(student in students){
-                            <option value="${student.id}" class="alert alert-success alert-dismissable">
-                                ${student.name}
-                            </option>
-                            @}
-                        </select>
-                </div>
                 <div class="col-sm-6">
                     <label class="col-sm-3 control-label">班级</label>
                     <div class="col-sm-9">
-                        <select id="classcode" name="classcode" class="form-control" >
+                        <select onchange="getStu()" id="classcode" name="classcode" class="form-control" >
                             @for(class in classes){
-                            <option value="${class.id}" class="alert alert-success alert-dismissable">
+                            <option  value="${class.id}" class="alert alert-success alert-dismissable">
                                 ${class.name}
                             </option>
                             @}
                         </select>
                     </div>
                 </div>
+                <div class="col-sm-6 b-r">
+                    学生姓名:
+                        <select id="userid" name="userid" class="form-control" >
+                        </select>
+                </div>
+
             </div>
 
             <div class="row btn-group-m-t">

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,7 +102,17 @@ public class ScoreController extends BaseController {
     @RequestMapping(value = "/add")
     @ResponseBody
     public Object add(Score score) {
-        scoreService.insert(score);
+	    Classes classes = iClassesService.selectById(score.getClasscode());
+	    User user = iUserService.selectById(score.getUserid());
+	    Course course = iCourseService.selectById(score.getCourseid());
+	    score.setClassname(classes.getName());
+	    score.setClasscode(classes.getCode());
+	    score.setCoursename(course.getCourse());
+	    score.setUserid(user.getId());
+	    score.setUsername(user.getName());
+	    score.setGrade(classes.getGrade());
+	    score.setDatetime(new Date());
+	    scoreService.insert(score);
         return SUCCESS_TIP;
     }
 

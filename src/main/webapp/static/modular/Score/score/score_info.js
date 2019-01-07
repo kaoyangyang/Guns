@@ -98,5 +98,23 @@ ScoreInfoDlg.editSubmit = function() {
 }
 
 $(function() {
-
+    getStu();
 });
+function getStu(){
+    $("#username").empty();
+    var classid=$("#classcode option:selected").val();
+    $.ajax({
+        type: 'POST',
+        url: Feng.ctxPath + "/mgr/getStu",  	//默认使用form的action
+        data : {'classid':classid},	//序列化表单
+        dataType: 'JSON',
+        success: function(data){
+            for (var i=0;i<data.length;i++){
+                $("#userid").append('<option  value="'+data[i].id+'">'+data[i].name+'</option>');
+            }
+
+        },
+        error: function(XmlHttpRequest, textStatus, errorThrown){
+        }
+    });
+}

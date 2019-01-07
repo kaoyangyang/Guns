@@ -49,10 +49,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.naming.NoPermissionException;
 import javax.validation.Valid;
 import java.io.File;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * 系统管理员控制器
@@ -430,5 +427,18 @@ public class UserMgrController extends BaseController {
             throw new ServiceException(BizExceptionEnum.NO_PERMITION);
         }
 
+    }
+    /**
+     * 查询班级学生
+     */
+    @RequestMapping(method = RequestMethod.POST, path = "/getStu")
+    @ResponseBody
+    public Object  getStu(Integer classid) {
+        Classes classes = classesService.selectById(classid);
+        Map<String,Object> map =new HashMap<>();
+        map.put("classcode",classes.getCode());
+        map.put("roleid","7");
+        List<User> users = this.userService.selectByMap(map);
+        return users;
     }
 }
