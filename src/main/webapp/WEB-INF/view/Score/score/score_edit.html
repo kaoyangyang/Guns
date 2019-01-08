@@ -5,20 +5,51 @@
 
             <div class="row">
                 <div class="col-sm-6 b-r">
-                            <#input id="id" name="id" value="${item.id}" underline="true"/>
-                            <#input id="coursename" name="课程名称" value="${item.coursename}" underline="true"/>
-                            <#input id="courseid" name="课程id" value="${item.courseid}" underline="true"/>
-                            <#input id="socre" name="分数" value="${item.socre}" underline="true"/>
-                            <#input id="username" name="学生姓名" value="${item.username}" />
+                    班级:
+                    <select onchange="getStu()"  id="classcode" name="classcode" class="form-control" >
+                        @for(class in classes){
+
+                        @if(item.classcode==class.code){
+                        <option selected="selected"  value="${class.id}" class="alert alert-success alert-dismissable">
+                            ${class.name}
+                        </option>
+                        @}else{
+                        <option value="${class.id}" class="alert alert-success alert-dismissable">
+                            ${class.name}
+                        </option>
+                        @}
+                        @}
+                    </select>
+                </div>
+                <div class="col-sm-6 b-r">
+                    学生姓名:
+                    <select id="userid" name="userid" class="form-control" >
+                        <option value="${item.userid}">${item.username}</option>
+                    </select>
+                </div>
+                <div class="col-sm-6 b-r">
+                    <input type="hidden" id="id" value="${item.id}">
+                            <#input id="score" name="分数" value="${item.score}" underline="true"/>
                 </div>
 
-                <div class="col-sm-6">
-                            <#input id="userid" name="学生id" value="${item.userid}" underline="true"/>
-                            <#input id="classcode" name="班级id" value="${item.classcode}" underline="true"/>
-                            <#input id="classname" name="班级名称" value="${item.classname}" underline="true"/>
-                            <#input id="grade" name="年级" value="${item.grade}" underline="true"/>
-                            <#input id="datetime" name="录入时间" value="${item.datetime}" />
+                <div class="col-sm-6 b-r">
+                    课程:
+                    <select id="courseid" name="courseid" class="form-control" >
+                        @for(course in courses){
+
+                        @if(item.courseid==course.id){
+                        <option selected="selected"  value="${course.id}" class="alert alert-success alert-dismissable">
+                            ${course.course}
+                        </option>
+                        @}else{
+                        <option value="${course.id}" class="alert alert-success alert-dismissable">
+                            ${course.course}
+                        </option>
+                        @}
+                        @}
+                    </select>
                 </div>
+
             </div>
 
             <div class="row btn-group-m-t">

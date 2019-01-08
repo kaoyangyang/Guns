@@ -48,7 +48,7 @@ ScoreInfoDlg.collectData = function() {
     .set('id')
     .set('coursename')
     .set('courseid')
-    .set('socre')
+    .set('score')
     .set('username')
     .set('userid')
     .set('classcode')
@@ -101,7 +101,9 @@ $(function() {
     getStu();
 });
 function getStu(){
-    $("#username").empty();
+
+    $("#userid").empty();
+    console.log($("#userid"));
     var classid=$("#classcode option:selected").val();
     $.ajax({
         type: 'POST',

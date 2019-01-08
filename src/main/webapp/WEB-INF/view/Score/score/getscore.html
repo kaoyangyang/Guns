@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>分数查询</h5>
+                <input type="button" value="导出excel" onclick="getExcel()">
+            </div>
+        </div>
+    </div>
+
+    <table  style="overflow:hidden;"  id="scoreList_table"></table>
+    <div class="panel-body martop30">
+        <div id="container" class="table-cont" style="height:490px"></div>
+    </div>
+    <div class="panel-body martop30">
+        <div id="containerRound" class="table-cont" style="height:490px"></div>
+    </div>
+    <div id="u108339" class="ax_default droplist">
+        <div class="col-sm-6 b-r">
+            课程:
+            <select id="courseid" name="courseid"  >
+                @for(course in courses){
+                <option value="${course.id}" class="alert alert-success alert-dismissable">
+                    ${course.course}
+                </option>
+                @}
+            </select>
+        </div>
+        <input type="button" onclick="getHis()" value="历史数据分析">
+    </div>
+    <div class="panel-body martop30">
+        <div id="containerHis"  class="table-cont" style="height:490px ;"></div>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/Score/score/score_getscore.js"></script>
+@}
