@@ -14,12 +14,8 @@ var Score = {
 Score.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-            {title: '课程名称', field: 'coursename', visible: true, align: 'center', valign: 'middle'},
-            {title: '分数', field: 'score', visible: true, align: 'center', valign: 'middle'},
-            {title: '学生姓名', field: 'username', visible: true, align: 'center', valign: 'middle'},
-            {title: '班级名称', field: 'classname', visible: true, align: 'center', valign: 'middle'},
-            {title: '年级', field: 'grade', visible: true, align: 'center', valign: 'middle'},
-            {title: '录入时间', field: 'datetime', visible: true, align: 'center', valign: 'middle'}
+            {title: '班级', field: 'coursename', visible: true, align: 'center', valign: 'middle'},
+            {title: '平均分', field: 'score', visible: true, align: 'center', valign: 'middle'},
     ];
 };
 
@@ -75,7 +71,7 @@ Score.openScoreDetail = function () {
 Score.delete = function () {
     if (this.check()) {
         var ajax = new $ax(Feng.ctxPath + "/score/delete", function (data) {
-            if(!data.success){
+            if(data.success){
                 Feng.success("删除失败,不在录入时间!")
             }else{
                 Feng.success("删除成功!")

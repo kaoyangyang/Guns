@@ -8,7 +8,7 @@ package cn.stylefeng.guns.core.common.constant.state;
  */
 public enum MarkStatus {
 
-    OK(1, "启用"), FREEZED(2, "冻结");
+    OK(1, "启用"), FREEZED(2, "冻结"),WARNING(3, "警告");
 
     int code;
     String message;

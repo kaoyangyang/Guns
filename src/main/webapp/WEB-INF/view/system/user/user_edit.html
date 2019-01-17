@@ -18,11 +18,16 @@
 				@if(user.mark==1){
 				<option selected="selected" value="1">开启</option>
 				<option value="2">关闭</option>
-				@}else{
+				<option value="3">警告</option>
+				@}else if (user.mark==2){
 				<option  value="1">开启</option>
 				<option selected="selected" value="2">关闭</option>
+				<option value="3">警告</option>
+				@}else if (user.mark==3){
+				<option  value="1">开启</option>
+				<option  value="2">关闭</option>
+				<option selected="selected" value="3">警告</option>
 				@}
-
 			</#select>
 					<#input id="roleid" name="角色" underline="true" value="${roleName}" disabled="disabled"/>
 

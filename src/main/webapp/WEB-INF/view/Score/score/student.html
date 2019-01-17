@@ -1,0 +1,112 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>个人排名</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                学科:
+                                <select   id="courseid" name="courseid" class="form-control" >
+                                    <option value=""   class="alert alert-success alert-dismissable">
+                                        全部
+                                    </option>
+                                    @for(course in courses){
+                                    @if(course.id==score.courseid){
+                                    <option value=" ${course.id}"  selected="selected"  class="alert alert-success alert-dismissable">
+                                        ${course.course}
+                                    </option>
+                                    @}else{
+                                    <option value=" ${course.id}"   class="alert alert-success alert-dismissable">
+                                        ${course.course}
+                                    </option>
+                                    @ }
+                                    @}
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                    班级:
+                                    <select   id="calsscode" name="calsscode" class="form-control" >
+                                        <option value=""   class="alert alert-success alert-dismissable">
+                                            全部
+                                        </option>
+                                        @for(class in classes){
+                                        @if(class.code==score.classcode){
+                                            <option value=" ${class.code}"  selected="selected"  class="alert alert-success alert-dismissable">
+                                            ${class.name}
+                                        </option>
+                                        @}else{
+                                        <option value=" ${class.code}"   class="alert alert-success alert-dismissable">
+                                            ${class.name}
+                                        </option>
+                                        @ }
+                                        @}
+                                    </select>
+                            </div>
+                            <div class="col-sm-3">
+                                年级:
+                                <select   id="grade" name="grade" class="form-control" >
+                                    <option value=""   class="alert alert-success alert-dismissable">
+                                        全部
+                                    </option>
+                                    @for(grade in grades){
+                                    @if(grade.grade==score.grade){
+                                    <option value=" ${grade.grade}"  selected="selected"  class="alert alert-success alert-dismissable">
+                                        ${grade.grade}
+                                    </option>
+                                    @}else{
+                                    <option value=" ${grade.grade}"   class="alert alert-success alert-dismissable">
+                                        ${grade.grade}
+                                    </option>
+                                    @ }
+                                    @}
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="getorder()"/>
+                            </div>
+                        </div>
+                                <table class="table table-hover table-striped" style="width: 933px;">
+                                    <thead>
+                                    <tr>
+                                        <th style="text-align: center; vertical-align: middle; "
+                                            data-field="coursename">
+                                            <div class="th-inner ">姓名</div>
+                                            <div class="fht-cell" style="width: 148.2px;"></div>
+                                        </th>
+                                        <th style="text-align: center; vertical-align: middle; " data-field="score">
+                                            <div class="th-inner ">总分</div>
+                                            <div class="fht-cell" style="width: 149.2px;"></div>
+                                        </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @for(stu in students){
+                                    <tr  >
+                                        <td style="text-align: center; vertical-align: middle; ">  ${stu.name}</td>
+                                        <td style="text-align: center; vertical-align: middle; "> ${stu.total}</td>
+                                    </tr>
+                                    @}
+                                    </tbody>
+                                </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script >
+    function getorder(){
+        var calsscode= $("#calsscode").val();
+        var grade= $("#grade").val();
+        var courseid =$("#courseid").val();
+        window.location = Feng.ctxPath + "/score/student?classcode="+calsscode+"&grade="+grade+"&courseid="+courseid;
+    }
+
+
+</script>
+@}

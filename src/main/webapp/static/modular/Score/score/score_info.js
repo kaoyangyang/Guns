@@ -67,9 +67,18 @@ ScoreInfoDlg.addSubmit = function() {
 
     //提交信息
     var ajax = new $ax(Feng.ctxPath + "/score/add", function(data){
-        Feng.success("添加成功!");
-        window.parent.Score.table.refresh();
-        ScoreInfoDlg.close();
+        if(data.success=="unfreeze"){
+            Feng.success("用户不及格数已达5科，无法录入!")
+        }else if(data.success=="outtime"){
+            Feng.success("不在录入时间!");
+            window.parent.Score.table.refresh();
+            ScoreInfoDlg.close();
+        }else {
+            Feng.success("添加成功!");
+            window.parent.Score.table.refresh();
+            ScoreInfoDlg.close();
+        }
+
     },function(data){
         Feng.error("添加失败!" + data.responseJSON.message + "!");
     });
