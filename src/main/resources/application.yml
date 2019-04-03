@@ -2,7 +2,7 @@ server:
   port: 8080
 
 guns:
-  swagger-open: true              #是否开启swagger (true/false)
+  swagger-open: false              #是否开启swagger (true/false)
   kaptcha-open: false             #是否开启登录时验证码 (true/false)
   #  file-upload-path: d:/tmp     #文件上传目录(不配置的话为java.io.tmpdir目录)
   spring-session-open: false      #是否开启spring session,如果是多机环境需要开启(true/false)
@@ -40,7 +40,7 @@ log:
 spring:
   profiles: local
   datasource:
-    url: jdbc:mysql://129.204.112.31:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+      url: jdbc:mysql://129.204.112.31:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456
     filters: wall,mergeStat
