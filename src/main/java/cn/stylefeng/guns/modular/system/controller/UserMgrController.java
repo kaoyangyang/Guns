@@ -211,7 +211,8 @@ public class UserMgrController extends BaseController {
         user.setPassword(ShiroKit.md5(user.getPassword(), user.getSalt()));
         user.setStatus(ManagerStatus.OK.getCode());
         user.setCreatetime(new Date());
-
+        user.setClassname(classesService.selectById(user.getClasscode()).getName());
+        user.setClasscode(classesService.selectById(user.getClasscode()).getCode());
         this.userService.insert(UserFactory.createUser(user));
         return SUCCESS_TIP;
     }

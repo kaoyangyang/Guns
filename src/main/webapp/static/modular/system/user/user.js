@@ -19,7 +19,6 @@ MgrUser.initColumn = function () {
         {title: '账号', field: 'account', align: 'center', valign: 'middle', sortable: true},
         {title: '姓名', field: 'name', align: 'center', valign: 'middle', sortable: true},
         {title: '编号', field: 'code', align: 'center', valign: 'middle', sortable: true},
-        {title: '录入', field: 'markName', align: 'center', valign: 'middle', sortable: true},
         {title: '班级名', field: 'classname', align: 'center', valign: 'middle', sortable: true},
         {title: '性别', field: 'sexName', align: 'center', valign: 'middle', sortable: true},
         {title: '角色', field: 'roleName', align: 'center', valign: 'middle', sortable: true},
