@@ -1,3 +1,5 @@
+web:
+  upload-path: c:/upload/
 server:
   port: 8080
 
@@ -13,6 +15,14 @@ beetl:
   resource-auto-check: true       #热加载beetl模板，开发时候用
 
 spring:
+  mail:
+    host: smtp.163.com
+    username: 18753916953@163.com
+    password: wasd123
+    port: 25
+    protocol: smtp
+    default-encoding: UTF-8
+
   profiles:
     active: @spring.active@
   mvc:
@@ -40,7 +50,7 @@ log:
 spring:
   profiles: local
   datasource:
-      url: jdbc:mysql://129.204.112.31:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
+    url: jdbc:mysql://129.204.112.31:3306/guns?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=CONVERT_TO_NULL&useSSL=false&serverTimezone=CTT
     username: root
     password: 123456
     filters: wall,mergeStat

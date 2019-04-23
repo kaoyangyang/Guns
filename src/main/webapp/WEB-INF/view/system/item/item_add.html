@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <form id="postForm" method="post" action="/item/add" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                    <#select id="type" name="类型" underline="true" >
+                    <option value="请假">请假</option>
+                    <option value="报销">报销</option>
+                    </#select>
+                    <#input id="cotent" name="原因" underline="true"/>
+                    <#input id="startTime" name="开始时间" underline="true" type="text"/>
+                    <#input id="endTime" name="结束时间" underline="true" type="text"/>
+                </div>
+                <div class="col-sm-6">
+                    <input id="file" type="file"  name="file" multiple="multiple" accept=".doc,.jpg,.pdf">
+                </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <input id="myForm" name="提交"  type="button" value="提交"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/item/item_info.js"></script>
+<script>
+    // $('#myForm').click(function() {
+    //     $.ajax({
+    //         url : "${ctxPath}/item/add",
+    //         type : "POST",
+    //         data : $( '#postForm').serialize(),
+    //         success : function(data) {
+    //             if(data.code==200){
+    //                 alert("保存成功！")
+    //                 window.opener = null;
+    //                 // JS重写当前页面
+    //                 window.open("", "_self", "");
+    //                 // 顺理成章的关闭当前被重写的窗口
+    //                 window.close();
+    //             }
+    //             // $( '#serverResponse').html(data);
+    //         },
+    //         error : function(data) {
+    //             $( '#serverResponse').html(data.status + " : " + data.statusText + " : " + data.responseText);
+    //         }
+    //     });
+    // });
+    laydate.render({
+        elem: '#startTime'
+    });
+    laydate.render({
+        elem: '#endTime'
+    });
+</script>
+@}

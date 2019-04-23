@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                             <input  name="id"  type="hidden" id="id" value="${item.id}">
+                    <#select id="type" name="类型" underline="true" >
+                    @if(item.type=="请假"){
+                    <option value="请假" selected="selected">请假</option>
+                    <option value="报销">报销</option>
+                    @}
+                    @if(item.type=="报销"){
+                    <option value="报销" selected="selected">报销</option>
+                    <option value="请假" >请假</option>
+                    @ }
+
+                </#select>
+                            <#input id="cotent" name="原因" value="${item.cotent}" underline="true"/>
+                            <#input id="startTime" name="开始时间" value="${item.startTime}" underline="true"  type="text" />
+                            <#input id="endTime" name="结束时间" value="${item.endTime}" underline="true"  type="text" />
+                </div>
+
+                <div class="col-sm-6">
+                    <a href="/item/download?id=${item.id}" >${item.fileName}</a>
+                    <input type="hidden" value="${item.fileName}" name="fileName">
+                    <input id="path" type="file"  value="${item.path}" name="path" multiple="multiple" accept=".doc,.jpg,.pdf">
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ItemInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ItemInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/system/item/item_info.js"></script>
+<script>
+    laydate.render({
+        elem: '#startTime'
+    });
+    laydate.render({
+        elem: '#endTime'
+    });
+</script>
+@}

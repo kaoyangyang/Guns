@@ -1,6 +1,6 @@
 package cn.stylefeng.guns.modular.system.dao;
 
-import cn.stylefeng.guns.modular.system.model.Mark;
+import cn.stylefeng.guns.modular.system.model.Item;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 
 /**
@@ -9,8 +9,8 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  * </p>
  *
  * @author stylefeng
- * @since 2019-01-17
+ * @since 2019-04-03
  */
-public interface MarkMapper extends BaseMapper<Mark> {
+public interface ItemMapper extends BaseMapper<Item> {
 
 }
