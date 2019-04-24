@@ -26,6 +26,7 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.util.List;
 
 /**
  * 请假模块控制器
@@ -84,13 +85,13 @@ public class ItemController extends BaseController {
         Integer userId = ShiroKit.getUser().getId();
         User user = userService.selectById(userId);user.getRoleid();
         if(user.getRoleid().equals("6")){
-            itemEntityWrapper.eq("class_code",user.getClasscode());
+            itemEntityWrapper.eq("classcode",""+user.getClasscode().toString());
         }
         if(user.getRoleid().equals("7")){
             itemEntityWrapper.eq("user_id",userId);
         }
-
-        return itemService.selectList(itemEntityWrapper);
+        List<Item> items = itemService.selectList(itemEntityWrapper);
+        return items;
     }
 
     /**
@@ -121,7 +122,7 @@ public class ItemController extends BaseController {
         Integer userId = ShiroKit.getUser().getId();
         User user = userService.selectById(userId);
         item.setUserId(userId);
-        item.setClassCode(user.getClasscode());
+        item.setClassCode(user.getClasscode().toString());
         item.setUserName(user.getName());
         itemService.insert(item);
         return SUCCESS_TIP;

@@ -79,8 +79,8 @@ public class Item extends Model<Item> {
      * 状态
      */
     private String status;
-    @TableField("class_code")
-    private Integer classCode;
+    @TableField("classcode")
+    private String classCode;
 
     @Override
     protected Serializable pkVal() {

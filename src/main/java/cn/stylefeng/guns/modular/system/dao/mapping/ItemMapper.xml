@@ -15,11 +15,19 @@
         <result column="pass_name" property="passName" />
         <result column="path" property="path" />
         <result column="status" property="status" />
+        <result column="classcode" property="classcode" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, type, cotent, start_time, end_time, user_id, user_name, pass_id, pass_name, path, status
+        id, type, cotent, start_time, end_time, user_id, user_name, pass_id, pass_name, path, status,classcode
     </sql>
-
+    <select id="selectByClassCode" resultType="map">
+        select
+        <include refid="Base_Column_List" />
+        from item
+        <if test="classcode != null">
+            where classcode = #{classcode}
+        </if>
+    </select>
 </mapper>
